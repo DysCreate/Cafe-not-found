@@ -1,70 +1,192 @@
-# Getting Started with Create React App
+# CAFÉ NOT FOUND - Cyberpunk Terminal Interface
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A responsive cyberpunk-style café front-end inspired by retro green terminal UI, featuring glitch effects, dynamic animations, and a fully interactive interface.
 
-## Available Scripts
+## 🎮 Features
 
-In the project directory, you can run:
+### Theme & Style
+- **Neon Green Terminal Aesthetic**: Deep black background with vibrant neon green text
+- **Monospaced Typography**: Uses Share Tech Mono and VT323 fonts for authentic terminal feel
+- **Grid Background**: Subtle glowing grid lines for depth
+- **Glowing Borders**: All components outlined with animated green borders
+- **CRT Effects**: Scan-line overlay and flicker animations for authenticity
 
-### `npm start`
+### Layout Components
+- **Left Sidebar**: Vertical menu with glowing icons (Home, Menu, Side Effects, Reviews, Contact)
+- **Animated Header**: "Café not found" logo with typewriter effect and glitch animations
+- **Dynamic Menu Section**: Menu items that randomly change every 3 seconds with text scramble effects
+- **Side Effect Monitor**: Real-time animated graphs showing energy, caffeine, and glitch levels
+- **Glitchy Reviews**: Scrambled text that animates into real customer reviews
+- **Terminal Footer**: System status with blinking cursor and live timestamps
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Animations & Effects
+- **Glitch Text Effects**: Random character scrambling and glitch animations
+- **Neon Glow Transitions**: Interactive elements with hover glow effects
+- **CRT Scan Lines**: Authentic retro monitor overlay effect
+- **Typewriter Animations**: Text appears character by character
+- **Graph Animations**: SVG-based real-time data visualization
+- **Random Glitch Events**: Periodic system glitches for authenticity
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Tech Stack
 
-### `npm test`
+- **React 19.1.1**: Modern React with hooks and functional components
+- **Vanilla CSS**: Custom CSS with CSS Grid, Flexbox, and advanced animations
+- **Google Fonts**: Share Tech Mono and VT323 for authentic terminal typography
+- **SVG Graphics**: Animated charts and visual elements
+- **CSS Keyframes**: Complex animations for glitch effects and transitions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Getting Started
 
-### `npm run build`
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd glitchcafe
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-### `npm run eject`
+3. **Start the development server**
+   ```bash
+   npm start
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. **Open your browser**
+   Navigate to `http://localhost:3000`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Build for Production
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm run build
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📁 Project Structure
 
-## Learn More
+```
+src/
+├── components/
+│   ├── Sidebar.js          # Left navigation sidebar
+│   ├── Sidebar.css
+│   ├── Header.js           # Animated header with typewriter effect
+│   ├── Header.css
+│   ├── MenuSection.js      # Dynamic menu with scramble effects
+│   ├── MenuSection.css
+│   ├── SideEffectMonitor.js # Real-time animated graphs
+│   ├── SideEffectMonitor.css
+│   ├── ReviewsSection.js   # Glitchy review animations
+│   ├── ReviewsSection.css
+│   ├── Footer.js           # Terminal-style footer
+│   └── Footer.css
+├── App.js                  # Main application component
+├── App.css                 # Layout and global styles
+├── index.js               # Application entry point
+└── index.css              # Global CSS variables and base styles
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🎨 Design System
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Color Palette
+- **Primary Green**: `#00ff41` (Neon green)
+- **Dark Green**: `#00cc33` (Secondary green)
+- **Terminal Black**: `#0a0a0a` (Panel backgrounds)
+- **Deep Black**: `#000000` (Main background)
 
-### Code Splitting
+### Typography
+- **Share Tech Mono**: Primary monospace font
+- **VT323**: Terminal-style display font
+- **Font Sizes**: Responsive scaling from 0.7em to 2.5em
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Spacing
+- **Sidebar Width**: 80px (responsive: 60px/50px)
+- **Header Height**: 80px (responsive: 60px)
+- **Grid Gaps**: 20px (responsive: 15px/10px)
 
-### Analyzing the Bundle Size
+## 📱 Responsive Design
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The interface is fully responsive with breakpoints at:
+- **Desktop**: 1024px+
+- **Tablet**: 768px - 1023px
+- **Mobile**: 480px - 767px
+- **Small Mobile**: <480px
 
-### Making a Progressive Web App
+## 🔧 Customization
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Adding New Menu Items
+Edit the `menuItems` array in `MenuSection.js`:
+```javascript
+const menuItems = [
+  { name: "Your Item", price: "$X.XX", effect: "Description" },
+  // Add more items...
+];
+```
 
-### Advanced Configuration
+### Modifying Colors
+Update CSS variables in `index.css`:
+```css
+:root {
+  --neon-green: #00ff41;
+  --dark-green: #00cc33;
+  /* ... */
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Adjusting Animation Speeds
+Modify timing values in component files:
+```javascript
+const typingSpeed = 150; // Typewriter speed
+const updateInterval = 3000; // Menu update interval
+```
 
-### Deployment
+## 🌐 Browser Compatibility
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **Chrome**: 90+
+- **Firefox**: 88+
+- **Safari**: 14+
+- **Edge**: 90+
 
-### `npm run build` fails to minify
+## 📝 API Integration Ready
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The codebase is structured for easy backend integration:
+- Component state management ready for API calls
+- Modular component structure
+- Well-documented props and state
+- Error handling patterns in place
+
+## 🎯 Future Enhancements
+
+- [ ] Backend API integration for real menu data
+- [ ] User authentication system
+- [ ] Order management interface
+- [ ] Real-time chat system
+- [ ] Sound effects and audio feedback
+- [ ] Advanced glitch effects and particle systems
+- [ ] Dark/Light theme toggle
+- [ ] Accessibility improvements
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📞 Support
+
+For questions or support, please open an issue in the repository.
+
+---
+
+**Developed with ❤️ and ☕ by Cyber_Dev_2024**

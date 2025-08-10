@@ -1,13 +1,199 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Cyberpunk Terminal UI - Main Styles */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono:wght@400;700&family=VT323&display=swap');
+
+:root {
+  /* Cyberpunk Color Palette */
+  --neon-blue: #00ffff;
+  --dark-blue: #0080ff;
+  --terminal-black: #0a0a0a;
+  --deep-black: #000000;
+  --glow-blue: #00ffff;
+  --scan-line-color: rgba(0, 255, 255, 0.1);
+  --grid-line-color: rgba(0, 255, 255, 0.05);
+  
+  /* Typography */
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-terminal: 'VT323', monospace;
+  
+  /* Spacing */
+  --sidebar-width: 80px;
+  --header-height: 80px;
+  --footer-height: 60px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-mono);
+  background-color: var(--deep-black);
+  color: var(--neon-blue);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Grid Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* CRT Scan Lines */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    var(--scan-line-color) 2px,
+    var(--scan-line-color) 4px
+  );
+  z-index: -1;
+  pointer-events: none;
+  animation: scanlines 0.1s linear infinite;
+}
+
+@keyframes scanlines {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--terminal-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neon-blue);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dark-blue);
+}
+
+/* Selection Styling */
+::selection {
+  background: var(--neon-blue);
+  color: var(--deep-black);
+}
+
+/* Focus Styles */
+*:focus {
+  outline: 2px solid var(--neon-blue);
+  outline-offset: 2px;
+}
+
+/* Utility Classes */
+.glow {
+  text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue);
+}
+
+.glow-border {
+  box-shadow: 0 0 10px var(--neon-blue), inset 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
+.terminal-text {
+  font-family: var(--font-terminal);
+  font-size: 1.1em;
+}
+
+.mono-text {
+  font-family: var(--font-mono);
+}
+
+/* Animation Classes */
+.flicker {
+  animation: flicker 0.15s infinite linear;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.glitch {
+  position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  animation: glitch-1 0.5s infinite;
+  color: #ff0000;
+  z-index: -1;
+}
+
+.glitch::after {
+  animation: glitch-2 0.5s infinite;
+  color: #00ffff;
+  z-index: -2;
+}
+
+@keyframes glitch-1 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(2px, -2px); }
+  40% { transform: translate(2px, 2px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(-2px, 2px); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  :root {
+    --sidebar-width: 60px;
+    --header-height: 60px;
+  }
+  
+  .terminal-text {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --sidebar-width: 50px;
+  }
+  
+  body::before {
+    background-size: 15px 15px;
+  }
 }

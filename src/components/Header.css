@@ -1,0 +1,240 @@
+/* Header Styles */
+.header {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(10, 10, 10, 0.95) 100%
+  );
+  border-bottom: 2px solid var(--neon-blue);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(0, 255, 255, 0.02) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Logo Container */
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.main-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-terminal);
+  font-size: 2.5em;
+  color: var(--neon-blue);
+  margin: 0;
+  text-shadow: 0 0 20px var(--neon-blue);
+}
+
+.logo-prefix {
+  color: var(--neon-blue);
+  animation: blink 1s infinite;
+}
+
+.logo-text {
+  position: relative;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+  color: var(--neon-blue);
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Logo Subtitle */
+.logo-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--neon-blue);
+  opacity: 0.8;
+}
+
+.subtitle-text {
+  letter-spacing: 1px;
+}
+
+.subtitle-dots {
+  animation: dots 2s infinite;
+}
+
+@keyframes dots {
+  0%, 20% { content: '.'; }
+  40% { content: '..'; }
+  60%, 100% { content: '...'; }
+}
+
+/* Status Bar */
+.status-bar {
+  display: flex;
+  gap: 30px;
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+}
+
+.status-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.status-item:hover {
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.status-label {
+  color: var(--neon-blue);
+  opacity: 0.7;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+}
+
+.status-value {
+  color: var(--neon-blue);
+  font-weight: bold;
+  text-shadow: 0 0 5px var(--neon-blue);
+}
+
+/* Glitch Effect for Logo */
+.main-logo .glitch {
+  position: relative;
+}
+
+.main-logo .glitch::before,
+.main-logo .glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.main-logo .glitch::before {
+  animation: glitch-1 3s infinite;
+  color: #ff0000;
+  z-index: -1;
+  text-shadow: 2px 0 #ff0000;
+}
+
+.main-logo .glitch::after {
+  animation: glitch-2 3s infinite;
+  color: #00ffff;
+  z-index: -2;
+  text-shadow: -2px 0 #00ffff;
+}
+
+@keyframes glitch-1 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(2px, -2px); }
+  40% { transform: translate(2px, 2px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(-2px, 2px); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .header-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .status-bar {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 15px;
+  }
+  
+  .main-logo {
+    font-size: 2em;
+  }
+  
+  .status-bar {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .status-item {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 10px;
+  }
+  
+  .main-logo {
+    font-size: 1.5em;
+    letter-spacing: 2px;
+  }
+  
+  .logo-subtitle {
+    font-size: 0.8em;
+  }
+  
+  .status-bar {
+    font-size: 0.7em;
+  }
+}
