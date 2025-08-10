@@ -7,7 +7,7 @@ const MenuPage = () => {
     <div className="menu-page">
       <div className="menu-page-container">
         <div className="menu-page-header">
-          <h1 className="menu-page-title glitch" data-text="CYBERPUNK MENU">CYBERPUNK MENU</h1>
+          <h1 className="menu-page-title glitch" data-text="CYBERPUNK MENU">MENU</h1>
           <p className="menu-page-subtitle">Dynamic Digital Delicacies</p>
         </div>
 
